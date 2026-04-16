@@ -8,14 +8,14 @@ dotenv.config();
 const app = express();
 
 const allowedOrigins = [
-    "http://localhost:5173",
-    process.env.VITE_URL
+  "http://localhost:5173",
+  process.env.FRONTEND_URL  // rename for clarity
 ].filter(Boolean);
 
-// 1. DAPAT NASA ITAAS ITO (Bago ang routes)
+app.options('*', cors());   // ← handles preflight
 app.use(cors({
-    origin: allowedOrigins, // Dapat 'origin' (walang 's')
-    credentials: true
+  origin: allowedOrigins,
+  credentials: true
 }));
 
 app.use(express.json());
