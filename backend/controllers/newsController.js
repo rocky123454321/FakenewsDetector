@@ -11,15 +11,15 @@ export const checkNews = async (req, res) => {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "nvidia/nemotron-super-49b-v1:free",
+        model: "nvidia/nemotron-3-super-120b-a12b:free",
         messages: [
           {
             role: "system",
             content: `Return ONLY JSON, no markdown, no explanation:
 {
-  "result": "FAKE",
-  "level": "9/10",
-  "explanation": "No scientific evidence supports the claim."
+  "result": "FAKE or REAL",
+  "level": "0 to/10",
+  "explanation": "supports the claim a fact ."
 }`
           },
           {
