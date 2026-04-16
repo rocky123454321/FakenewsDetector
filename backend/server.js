@@ -5,6 +5,8 @@ import cors from 'cors';
 
 dotenv.config();
 
+// 👇 ADD THIS TEMPORARILY
+console.log("API KEY:", process.env.OPENROUTER_API_KEY ? "✅ Loaded" : "❌ UNDEFINED");
 const app = express();
 
 const allowedOrigins = [
