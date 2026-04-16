@@ -8,7 +8,8 @@ dotenv.config();
 const app = express();
 
 const allowedOrigins = [
-  "http://localhost:5173",
+    "http://localhost:5173",
+    process.env.VITE_URL
 ].filter(Boolean);
 
 // 1. DAPAT NASA ITAAS ITO (Bago ang routes)
