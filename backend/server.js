@@ -12,13 +12,11 @@ const allowedOrigins = [
     process.env.VITE_URL
 ].filter(Boolean);
 
-const corsOptions = {
+// ✅ No app.options() needed — cors() handles preflight automatically
+app.use(cors({
     origin: allowedOrigins,
     credentials: true
-};
-
-app.options('(.*)', cors(corsOptions)); // ✅ handles preflight
-app.use(cors(corsOptions));             // ✅ handles actual requests
+}));
 
 app.use(express.json());
 
