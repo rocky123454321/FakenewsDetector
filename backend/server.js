@@ -8,19 +8,20 @@ dotenv.config();
 const app = express();
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.FRONTEND_URL  // rename for clarity
+    "http://localhost:5173",
+    process.env.VITE_URL
 ].filter(Boolean);
 
-app.options('*', cors());   // ← handles preflight
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
-}));
+const corsOptions = {
+    origin: allowedOrigins,
+    credentials: true
+};
+
+app.options('(.*)', cors(corsOptions)); // ✅ handles preflight
+app.use(cors(corsOptions));             // ✅ handles actual requests
 
 app.use(express.json());
 
-// 2. Pagkatapos lang ng CORS pwede ilagay ang routes
 app.use('/api/news', newsRoutes);
 
 app.get('/', (req, res) => {
